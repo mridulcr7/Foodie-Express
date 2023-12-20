@@ -3,7 +3,7 @@ const User = require("../models/User");
 require("dotenv").config();
 
 
-const requireAuth = (req, res, next) => {
+module.exports.requireAuth = (req, res, next) => {
     const token = req.cookies.jwt;
   //  console.log(req.headers.authorization);
     if (token) {
@@ -30,5 +30,4 @@ const requireAuth = (req, res, next) => {
 };
 
 
-module.exports = { requireAuth };
 
