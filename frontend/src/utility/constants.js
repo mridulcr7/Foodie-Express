@@ -1,3 +1,3 @@
 export const res_logo = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 //const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5768353&lng=77.2444668&restaurantId=568534&catalog_qa=undefined&submitAction=ENTER");
-export const res_api = "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5768353&lng=77.2444668&restaurantId=";
+export const res_api = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5768353&lng=77.2444668&restaurantId=";
