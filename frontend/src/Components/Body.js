@@ -8,20 +8,26 @@ const Body = () => {
     const [resList, setresList] = useState([]);
     const [filteredList, setfilteredList] = useState(null);
     const [searchText, setsearchText] = useState("");
+    const [fetcherr, setfetcherr] = useState(false);
 
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6691565&lng=77.45375779999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-
-        const json = await data.json();
-        setfilteredList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setresList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        try {
+            const data = await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6691565&lng=77.45375779999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+            const json = await data.json();
+            setfilteredList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setresList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        }
+        catch {
+            setfetcherr(true);
+        }
+        
     };
 
-    return filteredList == null ? (
+    return filteredList === null ? (
         <ShimmerUi />
     ) : (
         <div className="bg-gray-100 min-h-screen p-4">
