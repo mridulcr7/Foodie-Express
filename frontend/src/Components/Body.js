@@ -44,7 +44,7 @@ const Body = () => {
                         <button
                             className="bg-indigo-500 text-white p-2 rounded-r-md hover:bg-indigo-600 focus:outline-none"
                             onClick={() => {
-                                const Res = resList.filter((res) =>
+                                const Res = resList?.filter((res) =>
                                     res.info.name.toLowerCase().includes(searchText.toLowerCase())
                                 );
                                 setfilteredList(Res);
@@ -57,7 +57,7 @@ const Body = () => {
                         <button
                             className="bg-green-500 text-white p-2 rounded-md hover:bg-green-600 focus:outline-none"
                             onClick={() => {
-                                const Res = resList.filter((res) => res.info.avgRating >= 4.2);
+                                const Res = resList?.filter((res) => res.info.avgRating >= 4.2);
                                 setfilteredList(Res);
                             }}
                         >
@@ -75,8 +75,8 @@ const Body = () => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                    {filteredList.map((res) => (
-                        <Link key={res.info.id} to={`/resturant/${res.info.id}`}>
+                    {filteredList?.map((res) => (
+                        <Link key={res?.info?.id} to={`/resturant/${res.info.id}`}>
                             <RestaurantCardLabel resData={res} />
                         </Link>
                     ))}
