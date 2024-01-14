@@ -16,7 +16,7 @@ const Body = () => {
 
     const fetchData = async () => {
         try {
-            const data = await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6691565&lng=77.45375779999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+            const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6691565&lng=77.45375779999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
             const json = await data.json();
             setfilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             setresList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -27,7 +27,14 @@ const Body = () => {
         
     };
 
-    return filteredList === null ? (
+    return fetcherr === true ? (
+        <div class="flex items-center justify-center h-screen">
+            <p class="text-2xl font-bold text-gray-800">
+                Please install CORS Extension in your browser to view restaurants.
+            </p>
+        </div>
+
+    ):  filteredList === null ? (
         <ShimmerUi />
     ) : (
         <div className="bg-gray-100 min-h-screen p-4">
